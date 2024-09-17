@@ -1,7 +1,9 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import { PortableText } from 'astro-portabletext'
 import type { PortableTextProps } from 'astro-portabletext/types'
-import Cmp from './Cmp.astro'
+import Mark from './Mark.astro'
+import Block from './Block.astro'
 
 export type PortableTextValue = PortableTextProps['value']
 
@@ -19,10 +21,16 @@ const valueArray = Array.isArray(value) ? value : [value]
   HeadingTag ? (
     <HeadingTag {...props}>
       {valueArray.map((value: PortableTextValue, index: number) =>
-        index > 0 ? <span {...props}>{<Cmp value={value} />}</span> : <Cmp value={value} />
+        index > 0 ? (
+          <span {...props}>{<PortableText value={value} components={{ block: Block, mark: Mark }} />}</span>
+        ) : (
+          <PortableText value={value} components={{ block: Block, mark: Mark }} />
+        )
       )}
     </HeadingTag>
   ) : (
-    <Cmp value={value} />
+    <div {...props}>
+      <PortableText value={value} components={{ mark: Mark }} />
+    </div>
   )
 }
