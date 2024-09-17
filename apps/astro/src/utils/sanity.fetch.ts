@@ -1,19 +1,20 @@
 import { createClient, type QueryParams } from '@sanity/client'
-import { isPreviewDeployment } from '../utils/is-preview-deployment';
+import { isPreviewDeployment } from './is-preview-deployment';
+import { loadEnv } from "vite";
 
-const TOKEN = import.meta.env.SANITY_API_TOKEN || process.env.SANITY_API_TOKEN;
+const { SANITY_API_TOKEN } = loadEnv(process.env.SANITY_API_TOKEN!, process.cwd(), "");
 
-if (isPreviewDeployment && !TOKEN) {
+if (isPreviewDeployment && !SANITY_API_TOKEN) {
   throw new Error("The `SANITY_API_TOKEN` environment variable is required.");
 }
 
 export const client = createClient({
-  projectId: 'YOUR_PROJECT_ID',
+  projectId: 'yvmgzxdp',
   dataset: 'production',
   apiVersion: '2024-08-30',
   useCdn: false,
   perspective: isPreviewDeployment ? 'previewDrafts' : 'published',
-  ...(isPreviewDeployment && { token: TOKEN }),
+  ...(isPreviewDeployment && { token: SANITY_API_TOKEN }),
 })
 
 export default async function sanityFetch<QueryResponse>({
