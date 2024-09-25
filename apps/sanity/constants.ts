@@ -14,4 +14,5 @@ export const DOMAIN: string = "https://kryptonum.eu";
  * @constant
  * @type {string}
  */
-export const PREVIEW_DEPLOYMENT_DOMAIN: string = import.meta.env.SANITY_STUDIO_PREVIEW_DOMAIN;
+export const PREVIEW_DEPLOYMENT_DOMAIN: string = process.env.SANITY_STUDIO_PREVIEW_DOMAIN ?? "";
+
