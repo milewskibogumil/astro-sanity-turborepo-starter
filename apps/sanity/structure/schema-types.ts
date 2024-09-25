@@ -17,7 +17,7 @@ const collectionTypes = [
 ];
 
 // Components
-import Components from '../schema/ui/Components';
+import Components from '../schema/Components';
 
 const components = [
   Components,

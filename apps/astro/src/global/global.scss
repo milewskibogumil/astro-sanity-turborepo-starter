@@ -10,14 +10,6 @@
   font-style: normal;
 }
 
-@function rem($px) {
-  @if round($px) == $px {
-    @return calc($px / 16) + rem;
-  } @else {
-    @error "The value passed to rem() must be an integer";
-  }
-}
-
 *,
 *::before,
 *::after {
