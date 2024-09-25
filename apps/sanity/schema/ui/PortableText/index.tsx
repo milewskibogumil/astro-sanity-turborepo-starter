@@ -52,15 +52,15 @@ export const PortableText = ({ name, title, allowHeadings = false }: { name?: st
               name: 'external',
               type: 'string',
               title: 'URL',
-              description: 'Specify the full URL. Ensure it starts with "https://" and is a valid URL.',
+              description: 'Specify the full URL. Ensure it starts with "https://", "mailto:" or "tel:" protocol.',
               hidden: ({ parent }) => parent?.type !== 'external',
               validation: (Rule) => [
                 Rule.custom((value, { parent }) => {
                   const type = (parent as { type?: string })?.type;
                   if (type === 'external') {
                     if (!value) return "URL is required";
-                    if (!value.startsWith('https://')) {
-                      return 'External link must start with the "https://" protocol';
+                    if (!value.startsWith('https://') && !value.startsWith('mailto:') && !value.startsWith('tel:')) {
+                      return 'External link must start with the "https://", "mailto:" or "tel:" protocol';
                     }
                     if (!isValidUrl(value)) return 'Invalid URL';
                   }
