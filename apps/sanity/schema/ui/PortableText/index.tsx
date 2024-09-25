@@ -3,10 +3,10 @@ import { CustomInput } from "./CustomInput";
 import { isValidUrl } from "../../../utils/is-valid-url";
 import { InternalLinkableTypes } from "../../../structure/internal-linkable-types";
 
-export const PortableText = ({ allowHeadings = false }: { allowHeadings?: boolean }) => defineField({
-  name: 'PortableText',
+export const PortableText = ({ name, title, allowHeadings = false }: { name?: string, title?: string, allowHeadings?: boolean }) => defineField({
+  name: name || 'PortableText',
   type: 'array',
-  title: 'Portable Text',
+  title: title || 'Portable Text',
   components: {
     // @ts-ignore
     input: CustomInput
