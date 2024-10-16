@@ -25,7 +25,7 @@ export const Components_Query = /* groq */ `
   components[] {
     _type,
     sectionId,
-    _type == "FullWidthPhoto" => ${FullWidthPhoto_Query}
+    ${FullWidthPhoto_Query}
   },
 `
 ---

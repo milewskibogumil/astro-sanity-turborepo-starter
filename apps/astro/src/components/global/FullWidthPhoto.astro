@@ -2,7 +2,7 @@
 import Image, { ImageDataQuery, type ImageDataProps } from '@/components/ui/image'
 
 export const FullWidthPhoto_Query = `
-  {
+  _type == "FullWidthPhoto" => {
     ${ImageDataQuery('img')}
   },
 `
