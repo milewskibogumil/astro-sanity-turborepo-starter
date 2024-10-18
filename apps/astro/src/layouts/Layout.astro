@@ -4,12 +4,14 @@ import { LOCALE } from '../global/constants'
 import Head, { type Props as HeadProps } from './Head.astro'
 
 type Props = HeadProps
+
+const { ...props } = Astro.props
 ---
 
 <!doctype html>
 <html lang={LOCALE}>
   <head>
-    <Head {...Astro.props} />
+    <Head {...props} />
   </head>
   <body>
     <main id="main">
