@@ -16,6 +16,15 @@ export default defineConfig({
       hostname: "cdn.sanity.io"
     }],
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern",
+        }
+      }
+    }
+  },
   prefetch: {
     prefetchAll: true
   },
