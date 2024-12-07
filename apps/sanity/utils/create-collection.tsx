@@ -1,5 +1,5 @@
 import type { StructureBuilder } from "sanity/structure";
-import { schemaTypes } from "./schema-types";
+import { schemaTypes } from "../structure/schema-types";
 import { Preview } from "./preview";
 
 export const createCollection = (S: StructureBuilder, name: string) => {
